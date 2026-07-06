@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>District Library Varanasi — Digital Libraries for All</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E2250;          /* deep Ganga-dusk blue */
+  --river:#1D4E9E;        /* river blue */
+  --sky:#EAF2FC;          /* pale dawn sky */
+  --white:#FFFFFF;
+  --sindoor:#C8102E;      /* red */
+  --maroon:#7A0E1E;       /* dark red */
+  --gold:#F5B942;         /* diya flame */
+  --text:#22304F;
+  --muted:#5B6B8C;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Mukta',sans-serif;color:var(--text);background:var(--white);line-height:1.6}
+h1,h2,h3,.display{font-family:'Yatra One',cursive;font-weight:400}
+a{color:inherit}
+img{max-width:100%}
+
+/* ---------- top ribbon ---------- */
+.ribbon{background:var(--maroon);color:#F7E3D4;font-size:.85rem;letter-spacing:.06em;text-align:center;padding:.4rem 1rem}
+.ribbon b{color:var(--gold);font-weight:600}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:3px solid var(--sindoor);box-shadow:0 2px 14px rgba(14,34,80,.08)}
+.nav{max-width:1180px;margin:auto;display:flex;align-items:center;gap:1rem;padding:.7rem 1.2rem}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.brand svg{width:46px;height:46px;flex:none}
+.brand-name{line-height:1.15}
+.brand-name .en{font-family:'Yatra One',cursive;font-size:1.25rem;color:var(--ink)}
+.brand-name .hi{font-size:.85rem;color:var(--sindoor);font-weight:600}
+nav.links{margin-left:auto;display:flex;gap:1.4rem;font-weight:600;font-size:.95rem}
+nav.links a{text-decoration:none;color:var(--ink);padding:.3rem 0;border-bottom:2px solid transparent;transition:.2s}
+nav.links a:hover,nav.links a:focus-visible{color:var(--sindoor);border-bottom-color:var(--sindoor)}
+.login-btn{background:var(--sindoor);color:#fff !important;padding:.45rem 1.1rem !important;border-radius:999px;border-bottom:none !important}
+.login-btn:hover{background:var(--maroon)}
+@media(max-width:760px){nav.links{gap:.9rem;font-size:.85rem}.brand-name .en{font-size:1.05rem}}
+
+/* ---------- hero with ghat panorama ---------- */
+.hero{position:relative;background:linear-gradient(180deg,#0B1B44 0%,#12306F 45%,#1D4E9E 100%);color:#fff;overflow:hidden}
+.hero-inner{max-width:1180px;margin:auto;padding:4.5rem 1.2rem 0;position:relative;z-index:2;text-align:center}
+.hero .eyebrow{display:inline-block;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:.25rem 1rem;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:#FBD9A0;margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.12;text-shadow:0 3px 18px rgba(0,0,0,.35)}
+.hero h1 span{color:#FF8A9A}
+.hero .hi-title{font-size:clamp(1.1rem,2.4vw,1.6rem);color:#FBD9A0;margin-top:.4rem;font-family:'Yatra One',cursive}
+.hero p.lead{max-width:640px;margin:1.1rem auto 1.8rem;color:#D9E4F7;font-size:1.05rem}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.btn{display:inline-block;text-decoration:none;font-weight:600;border-radius:999px;padding:.7rem 1.7rem;transition:.2s}
+.btn-red{background:var(--sindoor);color:#fff;box-shadow:0 6px 20px rgba(200,16,46,.45)}
+.btn-red:hover{background:var(--maroon);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.65);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.ghat-svg{display:block;width:100%;height:auto;margin-top:-1rem;position:relative;z-index:1}
+.diya-f{animation:flick 2.2s ease-in-out infinite alternate;transform-origin:center bottom}
+.diya-f.d2{animation-delay:.6s}.diya-f.d3{animation-delay:1.1s}.diya-f.d4{animation-delay:.3s}.diya-f.d5{animation-delay:.9s}
+@keyframes flick{from{opacity:.65;transform:scale(.92)}to{opacity:1;transform:scale(1.06)}}
+.boat-drift{animation:drift 14s ease-in-out infinite alternate}
+.boat-drift.b2{animation-duration:18s;animation-delay:2s}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(28px)}}
+@media(prefers-reduced-motion:reduce){.diya-f,.boat-drift{animation:none}}
+
+/* ---------- stats strip ---------- */
+.stats{background:var(--maroon);color:#fff}
+.stats .wrap{max-width:1180px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:rgba(255,255,255,.15)}
+.stat{background:var(--maroon);text-align:center;padding:1.4rem 1rem}
+.stat .num{font-family:'Yatra One',cursive;font-size:1.9rem;color:var(--gold)}
+.stat .lbl{font-size:.85rem;color:#F3D9DD;letter-spacing:.04em}
+
+/* ---------- sections ---------- */
+section{padding:4.2rem 1.2rem}
+.wrap-narrow{max-width:1180px;margin:auto}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 2.6rem}
+.sec-head .kicker{color:var(--sindoor);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.78rem}
+.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);color:var(--ink);margin:.35rem 0 .6rem}
+.sec-head p{color:var(--muted)}
+
+/* ghat-step divider motif */
+.steps-divider{height:26px;background:
+  linear-gradient(var(--sky) 0 0) 0 0/100% 26px no-repeat;
+  position:relative}
+.steps-divider::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,transparent 0 46px,rgba(29,78,158,.16) 46px 48px),
+  repeating-linear-gradient(0deg,transparent 0 7px,rgba(29,78,158,.14) 7px 9px)}
+
+/* ---------- resource filters + cards ---------- */
+#resources{background:var(--sky)}
+.filters{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center;margin-bottom:2.2rem}
+.chip{border:1.5px solid var(--river);background:#fff;color:var(--river);border-radius:999px;padding:.38rem 1.05rem;font-weight:600;font-size:.88rem;cursor:pointer;transition:.2s;font-family:'Mukta',sans-serif}
+.chip:hover{background:#E3ECFB}
+.chip.active{background:var(--sindoor);border-color:var(--sindoor);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
+.card{background:#fff;border-radius:16px;padding:1.5rem 1.4rem 1.3rem;box-shadow:0 4px 18px rgba(14,34,80,.08);display:flex;flex-direction:column;gap:.6rem;border-top:4px solid var(--river);transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(14,34,80,.16);border-top-color:var(--sindoor)}
+.card .tag{align-self:flex-start;background:#F6E3E6;color:var(--maroon);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:.15rem .7rem}
+.card h3{color:var(--ink);font-size:1.18rem;line-height:1.3}
+.card p{color:var(--muted);font-size:.92rem;flex:1}
+.card .visit{align-self:flex-start;text-decoration:none;font-weight:700;color:var(--sindoor);font-size:.92rem;display:inline-flex;align-items:center;gap:.35rem}
+.card .visit:hover{color:var(--maroon);gap:.6rem}
+.card .visit::after{content:"→";transition:.2s}
+
+/* ---------- login ---------- */
+#login{background:linear-gradient(135deg,var(--ink) 0%,var(--river) 100%);color:#fff}
+.login-grid{max-width:1080px;margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
+@media(max-width:860px){.login-grid{grid-template-columns:1fr}}
+#login h2{font-size:clamp(1.7rem,3.2vw,2.4rem)}
+#login .hi{color:#FBD9A0;font-family:'Yatra One',cursive;margin:.2rem 0 1rem}
+#login p{color:#D9E4F7}
+#login ul{margin:1rem 0 0 1.1rem;color:#D9E4F7}
+#login li{margin:.35rem 0}
+.login-card{background:#fff;color:var(--text);border-radius:18px;padding:2rem 1.8rem;box-shadow:0 20px 50px rgba(0,0,0,.35);border-top:6px solid var(--sindoor)}
+.login-card h3{color:var(--ink);font-size:1.4rem;margin-bottom:.2rem}
+.login-card .sub{color:var(--muted);font-size:.9rem;margin-bottom:1.2rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-weight:600;font-size:.88rem;color:var(--ink);margin-bottom:.3rem}
+.field input{width:100%;border:1.5px solid #CBD6EA;border-radius:10px;padding:.65rem .9rem;font-family:'Mukta',sans-serif;font-size:.95rem;transition:.2s}
+.field input:focus{outline:none;border-color:var(--river);box-shadow:0 0 0 3px rgba(29,78,158,.18)}
+.login-submit{width:100%;border:none;cursor:pointer;background:var(--sindoor);color:#fff;font-family:'Mukta',sans-serif;font-weight:700;font-size:1rem;border-radius:10px;padding:.75rem;transition:.2s}
+.login-submit:hover{background:var(--maroon)}
+.login-note{font-size:.82rem;color:var(--muted);margin-top:.9rem;text-align:center}
+.login-msg{display:none;margin-top:1rem;border-radius:10px;padding:.7rem .9rem;font-size:.9rem;font-weight:600}
+.login-msg.ok{display:block;background:#E8F6EC;color:#1E6B37;border:1px solid #BBE3C8}
+.login-msg.err{display:block;background:#FBE9EC;color:var(--maroon);border:1px solid #F1C4CC}
+
+/* ---------- contact / footer ---------- */
+#contact{background:var(--sky)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem;max-width:1080px;margin:auto}
+.c-card{background:#fff;border-radius:16px;padding:1.7rem 1.5rem;text-align:center;box-shadow:0 4px 18px rgba(14,34,80,.08);border-bottom:4px solid var(--river)}
+.c-card .ico{width:52px;height:52px;border-radius:50%;background:#F6E3E6;display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;font-size:1.4rem}
+.c-card h3{color:var(--ink);font-size:1.05rem;margin-bottom:.25rem}
+.c-card p,.c-card a{color:var(--muted);font-size:.95rem;text-decoration:none}
+.c-card a:hover{color:var(--sindoor)}
+footer{background:var(--ink);color:#B9C8E6;text-align:center;padding:1.6rem 1rem;font-size:.88rem}
+footer .om{color:var(--gold);font-family:'Yatra One',cursive;font-size:1.1rem}
+footer a{color:#FBD9A0;text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<div class="ribbon">॥ काशी — जहाँ ज्ञान की गंगा बहती है ॥ &nbsp;•&nbsp; <b>Digital Libraries for All</b> &nbsp;•&nbsp; निःशुल्क ई-संसाधन सबके लिए</div>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="District Library Varanasi home">
+      <!-- diya-on-book logo -->
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M8 44 L32 52 L56 44 L56 50 L32 58 L8 50 Z" fill="#7A0E1E"/>
+        <path d="M8 40 L32 48 L56 40 L56 45 L32 53 L8 45 Z" fill="#1D4E9E"/>
+        <path d="M20 38 Q32 44 44 38 L42 44 Q32 48 22 44 Z" fill="#C8102E"/>
+        <ellipse cx="32" cy="37" rx="11" ry="3.4" fill="#7A0E1E"/>
+        <path d="M32 14 Q37 22 32 30 Q27 22 32 14 Z" fill="#F5B942"/>
+        <path d="M32 19 Q34.6 23.5 32 28.5 Q29.4 23.5 32 19 Z" fill="#C8102E"/>
+      </svg>
+      <span class="brand-name">
+        <span class="en">District Library Varanasi</span><br>
+        <span class="hi">जिला पुस्तकालय, वाराणसी</span>
+      </span>
+    </a>
+    <nav class="links" aria-label="Main navigation">
+      <a href="#resources">E-Resources</a>
+      <a href="#contact">Contact</a>
+      <a href="#login" class="login-btn">Student Login</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <span class="eyebrow">District Library • Varanasi</span>
+    <h1>Digital Libraries <span>for All</span></h1>
+    <div class="hi-title">ज्ञान की गंगा — अब हर घर, हर हाथ में</div>
+    <p class="lead">From the eternal ghats of Kashi to your screen — explore 20+ free digital
+      libraries and e-resources: eBooks, journals, theses, courseware and the treasures of
+      Hindi, Sanskrit &amp; Urdu literature.</p>
+    <div class="hero-cta">
+      <a class="btn btn-red" href="#resources">Explore Free E-Resources</a>
+      <a class="btn btn-ghost" href="#login">Student Login</a>
+    </div>
+  </div>
+
+  <!-- Kashi ghat panorama -->
+  <svg class="ghat-svg" viewBox="0 0 1440 430" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Panorama of the ghats of Varanasi at dawn with temples, boats and floating diyas">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1D4E9E" stop-opacity="0"/>
+        <stop offset="1" stop-color="#2B60B5" stop-opacity=".5"/>
+      </linearGradient>
+      <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#173F86"/>
+        <stop offset="1" stop-color="#0B1B44"/>
+      </linearGradient>
+      <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="#FF8A5C"/>
+        <stop offset=".55" stop-color="#E8483C"/>
+        <stop offset="1" stop-color="#C8102E"/>
+      </radialGradient>
+    </defs>
+
+    <rect width="1440" height="430" fill="url(#sky)"/>
+    <circle cx="1150" cy="120" r="58" fill="url(#sun)" opacity=".95"/>
+    <circle cx="1150" cy="120" r="86" fill="#E8483C" opacity=".18"/>
+
+    <!-- far skyline (dark red silhouettes) -->
+    <g fill="#5E0B18" opacity=".85">
+      <path d="M0 240 h60 v-40 h14 v40 h30 v-24 h12 v24 h40 v-60 l16 -18 16 18 v60 h50 v-30 h14 v30 h60 v-46 h12 v46 h40 l0 60 h-304 z"/>
+      <!-- big shikhara temple -->
+      <path d="M370 300 v-90 q0 -12 10 -16 l0 -34 6 -22 6 22 v34 q10 4 10 16 v90 z"/>
+      <path d="M362 300 v-52 h8 v52 z M402 300 v-52 h8 v52 z"/>
+      <!-- dome -->
+      <path d="M470 300 v-48 q0 -30 28 -30 q28 0 28 30 v48 z"/>
+      <rect x="493" y="200" width="8" height="26"/>
+      <path d="M560 300 v-70 h16 v-20 l10 -14 10 14 v20 h16 v70 z"/>
+      <path d="M660 300 v-50 h90 v50 z M690 250 v-36 q0 -10 8 -14 l0 -20 5 -14 5 14 v20 q8 4 8 14 v36 z"/>
+      <path d="M800 300 v-60 h50 v60 z M815 240 v-26 l10 -16 10 16 v26 z"/>
+      <path d="M900 300 v-44 q0 -26 24 -26 q24 0 24 26 v44 z"/>
+      <path d="M990 300 v-84 q0 -12 9 -15 l0 -30 5 -18 5 18 v30 q9 3 9 15 v84 z"/>
+      <path d="M1060 300 v-40 h70 v40 z"/>
+      <path d="M1180 300 v-56 h18 v-18 l9 -12 9 12 v18 h18 v56 z"/>
+      <path d="M1280 300 v-36 h160 v36 z M1330 264 v-30 q0 -9 7 -12 v-16 l4 -12 4 12 v16 q7 3 7 12 v30 z"/>
+    </g>
+
+    <!-- near buildings (maroon) -->
+    <g fill="#7A0E1E">
+      <path d="M0 300 v-46 h90 v46 z M20 254 v-22 h12 v22 z M60 254 v-22 h12 v22 z"/>
+      <path d="M120 300 v-64 h110 v64 z M140 236 v-18 h14 v18 z M180 236 v-18 h14 v18 z"/>
+      <path d="M260 300 v-40 h100 v40 z"/>
+      <path d="M430 300 v-52 h120 v52 z M455 248 v-20 h16 v20 z M505 248 v-20 h16 v20 z"/>
+      <path d="M600 300 v-58 h130 v58 z"/>
+      <path d="M770 300 v-44 h110 v44 z"/>
+      <path d="M910 300 v-58 h120 v58 z M935 242 v-18 h14 v18 z M985 242 v-18 h14 v18 z"/>
+      <path d="M1070 300 v-40 h120 v40 z"/>
+      <path d="M1230 300 v-52 h210 v52 z"/>
+      <!-- ghat umbrellas -->
+      <g>
+        <path d="M320 300 v-22" stroke="#F5B942" stroke-width="3"/>
+        <path d="M296 280 q24 -18 48 0 z" fill="#C8102E"/>
+        <path d="M1210 300 v-20" stroke="#F5B942" stroke-width="3"/>
+        <path d="M1188 282 q22 -16 44 0 z" fill="#C8102E"/>
+      </g>
+    </g>
+
+    <!-- ghat steps -->
+    <g fill="#8E1B2C">
+      <rect x="0" y="300" width="1440" height="14"/>
+      <rect x="0" y="314" width="1440" height="14" fill="#7A0E1E"/>
+      <rect x="0" y="328" width="1440" height="14" fill="#66101C"/>
+      <rect x="0" y="342" width="1440" height="14" fill="#530C17"/>
+    </g>
+
+    <!-- river -->
+    <rect x="0" y="356" width="1440" height="74" fill="url(#water)"/>
+    <g stroke="#5F8AD1" stroke-width="2" opacity=".45" stroke-linecap="round">
+      <path d="M120 378 h70 M300 396 h90 M520 384 h60 M760 400 h80 M980 380 h70 M1200 394 h80"/>
+    </g>
+    <!-- sun reflection -->
+    <g stroke="#E8483C" stroke-width="3" opacity=".55" stroke-linecap="round">
+      <path d="M1120 370 h60 M1132 384 h40 M1140 398 h28 M1146 412 h18"/>
+    </g>
+
+    <!-- boats -->
+    <g class="boat-drift">
+      <path d="M420 392 q40 16 84 0 l-10 14 q-32 8 -64 0 z" fill="#0A1430"/>
+      <path d="M460 392 v-26" stroke="#0A1430" stroke-width="3"/>
+      <path d="M460 366 l22 20 h-22 z" fill="#C8102E"/>
+    </g>
+    <g class="boat-drift b2">
+      <path d="M880 402 q34 13 70 0 l-9 11 q-26 7 -52 0 z" fill="#0A1430"/>
+      <path d="M914 402 v-20" stroke="#0A1430" stroke-width="3"/>
+      <path d="M914 382 l18 16 h-18 z" fill="#F5B942"/>
+    </g>
+
+    <!-- floating diyas -->
+    <g>
+      <g class="diya-f"><ellipse cx="240" cy="410" rx="10" ry="4" fill="#7A0E1E"/><path d="M240 396 q4 6 0 12 q-4 -6 0 -12" fill="#F5B942"/><circle cx="240" cy="401" r="6" fill="#F5B942" opacity=".25"/></g>
+      <g class="diya-f d2"><ellipse cx="640" cy="418" rx="10" ry="4" fill="#7A0E1E"/><path d="M640 404 q4 6 0 12 q-4 -6 0 -12" fill="#F5B942"/><circle cx="640" cy="409" r="6" fill="#F5B942" opacity=".25"/></g>
+      <g class="diya-f d3"><ellipse cx="1050" cy="414" rx="10" ry="4" fill="#7A0E1E"/><path d="M1050 400 q4 6 0 12 q-4 -6 0 -12" fill="#F5B942"/><circle cx="1050" cy="405" r="6" fill="#F5B942" opacity=".25"/></g>
+      <g class="diya-f d4"><ellipse cx="1330" cy="408" rx="10" ry="4" fill="#7A0E1E"/><path d="M1330 394 q4 6 0 12 q-4 -6 0 -12" fill="#F5B942"/><circle cx="1330" cy="399" r="6" fill="#F5B942" opacity=".25"/></g>
+      <g class="diya-f d5"><ellipse cx="80" cy="420" rx="10" ry="4" fill="#7A0E1E"/><path d="M80 406 q4 6 0 12 q-4 -6 0 -12" fill="#F5B942"/><circle cx="80" cy="411" r="6" fill="#F5B942" opacity=".25"/></g>
+    </g>
+  </svg>
+</div>
+
+<!-- ================= STATS ================= -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num">20+</div><div class="lbl">Free Digital Libraries</div></div>
+    <div class="stat"><div class="num">75,000+</div><div class="lbl">eBooks on Project Gutenberg</div></div>
+    <div class="stat"><div class="num">33,378</div><div class="lbl">Academic Books on DOAB</div></div>
+    <div class="stat"><div class="num">23,060</div><div class="lbl">Urdu eBooks on Rekhta</div></div>
+  </div>
+</div>
+
+<!-- ================= RESOURCES ================= -->
+<section id="resources">
+  <div class="wrap-narrow">
+    <div class="sec-head">
+      <span class="kicker">निःशुल्क ई-संसाधन</span>
+      <h2>Digital Libraries &amp; Free E-Resources</h2>
+      <p>Hand-picked open resources for students, researchers and lifelong learners — click any card to visit the library.</p>
+    </div>
+
+    <div class="filters" role="tablist" aria-label="Filter resources">
+      <button class="chip active" data-f="all">All</button>
+      <button class="chip" data-f="national">National Repositories</button>
+      <button class="chip" data-f="heritage">Indian Heritage</button>
+      <button class="chip" data-f="literature">Hindi • Sanskrit • Urdu</button>
+      <button class="chip" data-f="journals">Journals &amp; Research</button>
+      <button class="chip" data-f="learning">Courseware &amp; Theses</button>
+    </div>
+
+    <div class="grid" id="cardGrid">
+
+      <div class="card" data-cat="national">
+        <span class="tag">National Repository</span>
+        <h3>National Digital Library of India (NDLI)</h3>
+        <p>A virtual repository of learning resources — textbooks, articles, video lectures, audiobooks and more for every learner. Developed and maintained by IIT Kharagpur.</p>
+        <a class="visit" href="https://ndl.iitkgp.ac.in/" target="_blank" rel="noopener">ndl.iitkgp.ac.in</a>
+      </div>
+
+      <div class="card" data-cat="national">
+        <span class="tag">eBooks</span>
+        <h3>Project Gutenberg</h3>
+        <p>A volunteer effort founded in 1971 to digitize and archive cultural works. Over 75,000 free eBooks — classics of world literature, free to read and download.</p>
+        <a class="visit" href="https://www.gutenberg.org" target="_blank" rel="noopener">gutenberg.org</a>
+      </div>
+
+      <div class="card" data-cat="national">
+        <span class="tag">Digital Archive</span>
+        <h3>Internet Archive</h3>
+        <p>A non-profit library of millions of free books, movies, music, software and websites — including a huge collection of digitized Indian texts.</p>
+        <a class="visit" href="https://archive.org" target="_blank" rel="noopener">archive.org</a>
+      </div>
+
+      <div class="card" data-cat="heritage">
+        <span class="tag">Indian Heritage</span>
+        <h3>Ved Puran</h3>
+        <p>Free downloads of the Vedas, Puranas and other sacred Sanskrit-Hindi texts for readers, students and researchers of Indian scriptures.</p>
+        <a class="visit" href="http://vedpuran.net" target="_blank" rel="noopener">vedpuran.net</a>
+      </div>
+
+      <div class="card" data-cat="heritage">
+        <span class="tag">Indian Heritage</span>
+        <h3>Vedic Heritage Portal</h3>
+        <p>Government of India portal presenting Vedic texts, audio-video recordings of recitations and knowledge of India's Vedic tradition in one place.</p>
+        <a class="visit" href="https://vedicheritage.gov.in" target="_blank" rel="noopener">vedicheritage.gov.in</a>
+      </div>
+
+      <div class="card" data-cat="heritage">
+        <span class="tag">Indian Heritage</span>
+        <h3>Jain eLibrary</h3>
+        <p>A vast collection of Jain literature with the Jain Quantum search engine, which lets you search within the full text of thousands of Jain works.</p>
+        <a class="visit" href="https://jainelibrary.org/" target="_blank" rel="noopener">jainelibrary.org</a>
+      </div>
+
+      <div class="card" data-cat="heritage">
+        <span class="tag">Manuscripts</span>
+        <h3>National Mission for Manuscripts (NAMAMI)</h3>
+        <p>India's national mission to survey, document, conserve and digitize the country's vast manuscript wealth and make it accessible to all.</p>
+        <a class="visit" href="https://www.namami.gov.in" target="_blank" rel="noopener">namami.gov.in</a>
+      </div>
+
+      <div class="card" data-cat="literature">
+        <span class="tag">हिंदी</span>
+        <h3>Hindi Samay — World of Hindi</h3>
+        <p>हिंदी का रचना संसार — a rich online collection of Hindi literature: stories, novels, poetry, essays and criticism from classic and modern writers.</p>
+        <a class="visit" href="https://www.hindisamay.com" target="_blank" rel="noopener">hindisamay.com</a>
+      </div>
+
+      <div class="card" data-cat="literature">
+        <span class="tag">हिंदी काव्य</span>
+        <h3>Kavita Kosh</h3>
+        <p>The largest online treasury of Hindi and other Indian-language poetry — from Kabir and Tulsidas to contemporary poets, free for everyone.</p>
+        <a class="visit" href="https://www.kavitakosh.org" target="_blank" rel="noopener">kavitakosh.org</a>
+      </div>
+
+      <div class="card" data-cat="literature">
+        <span class="tag">हिंदी</span>
+        <h3>Hindwi</h3>
+        <p>A beautifully curated platform for Hindi poetry and prose — dohas, ghazals, kavita and stories with meanings and audio, by the Rekhta Foundation.</p>
+        <a class="visit" href="https://www.hindwi.org" target="_blank" rel="noopener">hindwi.org</a>
+      </div>
+
+      <div class="card" data-cat="literature">
+        <span class="tag">संस्कृत</span>
+        <h3>Sanskrit.nic.in — Sanskrit Theses</h3>
+        <p>Official portal for Sanskrit studies with access to Sanskrit theses, publications and resources for scholars and students of the language.</p>
+        <a class="visit" href="https://www.sanskrit.nic.in" target="_blank" rel="noopener">sanskrit.nic.in</a>
+      </div>
+
+      <div class="card" data-cat="literature">
+        <span class="tag">संस्कृत</span>
+        <h3>Sanskrit eBooks</h3>
+        <p>Thousands of free downloadable Sanskrit eBooks — scriptures, stotras, grammar, literature and rare digitized volumes.</p>
+        <a class="visit" href="http://www.sanskritebooks.org/" target="_blank" rel="noopener">sanskritebooks.org</a>
+      </div>
+
+      <div class="card" data-cat="literature">
+        <span class="tag">اردو • Urdu</span>
+        <h3>Rekhta</h3>
+        <p>The world's largest website for Urdu literature — 23,060+ Urdu eBooks plus ghazals, nazms and shayari with Devanagari and Roman scripts.</p>
+        <a class="visit" href="https://rekhta.org" target="_blank" rel="noopener">rekhta.org</a>
+      </div>
+
+      <div class="card" data-cat="journals">
+        <span class="tag">Open Access Books</span>
+        <h3>DOAB — Directory of Open Access Books</h3>
+        <p>33,378 academic, peer-reviewed open-access books from 406 publishers — free to read and download for research and study.</p>
+        <a class="visit" href="https://www.doabooks.org" target="_blank" rel="noopener">doabooks.org</a>
+      </div>
+
+      <div class="card" data-cat="journals">
+        <span class="tag">Journals</span>
+        <h3>DOAJ — Directory of Open Access Journals</h3>
+        <p>A community-curated index of high-quality, open-access, peer-reviewed journals across every subject and language of the world.</p>
+        <a class="visit" href="https://www.doaj.org" target="_blank" rel="noopener">doaj.org</a>
+      </div>
+
+      <div class="card" data-cat="journals">
+        <span class="tag">Journals</span>
+        <h3>NOPR — NISCPR Online Periodicals Repository</h3>
+        <p>Open repository of research journals published by CSIR–NISCPR, covering science, technology and traditional knowledge of India.</p>
+        <a class="visit" href="https://nopr.niscpr.res.in/" target="_blank" rel="noopener">nopr.niscpr.res.in</a>
+      </div>
+
+      <div class="card" data-cat="journals">
+        <span class="tag">Repositories</span>
+        <h3>OpenDOAR</h3>
+        <p>A global directory of open-access institutional repositories — discover research collections from universities and institutes worldwide.</p>
+        <a class="visit" href="http://www.opendoar.org/" target="_blank" rel="noopener">opendoar.org</a>
+      </div>
+
+      <div class="card" data-cat="learning">
+        <span class="tag">Open Courseware</span>
+        <h3>Yale Open Courses</h3>
+        <p>Free and open access to introductory courses taught by distinguished professors of Yale University — lectures, videos and materials.</p>
+        <a class="visit" href="https://oyc.yale.edu" target="_blank" rel="noopener">oyc.yale.edu</a>
+      </div>
+
+      <div class="card" data-cat="learning">
+        <span class="tag">Open Courseware</span>
+        <h3>eGyanKosh</h3>
+        <p>A national digital repository to store, index, preserve and share digital learning resources developed by open and distance learning institutions of India.</p>
+        <a class="visit" href="http://www.egyankosh.ac.in" target="_blank" rel="noopener">egyankosh.ac.in</a>
+      </div>
+
+      <div class="card" data-cat="learning">
+        <span class="tag">Theses</span>
+        <h3>Shodhganga</h3>
+        <p>INFLIBNET's reservoir of Indian theses and dissertations — full-text PhD research from universities across the country, open to all.</p>
+        <a class="visit" href="https://shodhganga.inflibnet.ac.in" target="_blank" rel="noopener">shodhganga.inflibnet.ac.in</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= STUDENT LOGIN ================= -->
+<section id="login">
+  <div class="login-grid">
+    <div>
+      <span class="eyebrow" style="color:#FBD9A0;letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;font-weight:700">Student Portal</span>
+      <h2>Student Login</h2>
+      <div class="hi">विद्यार्थी लॉगिन — अपनी लाइब्रेरी प्रोफ़ाइल में जाएँ</div>
+      <p>Registered members of District Library Varanasi can sign in to access their library account:</p>
+      <ul>
+        <li>View issued books &amp; due dates</li>
+        <li>Reserve books and reading-room seats</li>
+        <li>Save favourite e-resources</li>
+        <li>Get updates on new arrivals &amp; events</li>
+      </ul>
+    </div>
+    <form class="login-card" id="loginForm" novalidate>
+      <h3>Sign in</h3>
+      <div class="sub">Use the Student ID issued by the library.</div>
+      <div class="field">
+        <label for="sid">Student ID</label>
+        <input type="text" id="sid" name="sid" placeholder="e.g. DLV-2026-0154" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="pwd">Password</label>
+        <input type="password" id="pwd" name="pwd" placeholder="••••••••" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="login-submit">Login</button>
+      <div class="login-msg" id="loginMsg" role="status"></div>
+      <div class="login-note">New student? Register at the library help desk with a valid ID proof.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="sec-head">
+    <span class="kicker">संपर्क करें</span>
+    <h2>Contact the Librarian</h2>
+    <p>For membership, e-resource help or book requests, reach out — we're happy to help.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="c-card">
+      <div class="ico">👤</div>
+      <h3>Librarian</h3>
+      <p>Shri/Smt. ______________<br>District Librarian, Varanasi</p>
+    </div>
+    <div class="c-card">
+      <div class="ico">✉️</div>
+      <h3>Email</h3>
+      <a href="mailto:districtlibraryvaranasi@gmail.com">districtlibraryvaranasi@gmail.com</a>
+    </div>
+    <div class="c-card">
+      <div class="ico">📞</div>
+      <h3>Phone</h3>
+      <a href="tel:+910542000000">+91-542-XXXXXXX</a>
+    </div>
+    <div class="c-card">
+      <div class="ico">📍</div>
+      <h3>Visit Us</h3>
+      <p>District Library, Varanasi<br>Uttar Pradesh, India</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="om">॥ विद्या ददाति विनयम् ॥</div>
+  © 2026 District Library, Varanasi • <a href="#resources">Digital Libraries for All</a> — Free E-Resources for every learner.
+</footer>
+
+<script>
+/* ---- resource category filter ---- */
+const chips = document.querySelectorAll('.chip');
+const cards = document.querySelectorAll('#cardGrid .card');
+chips.forEach(chip => chip.addEventListener('click', () => {
+  chips.forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  const f = chip.dataset.f;
+  cards.forEach(card => {
+    card.style.display = (f === 'all' || card.dataset.cat === f) ? 'flex' : 'none';
+  });
+}));
+
+/* ---- student login (demo) ----
+   Connect this form to your student database / backend.
+   On submit it currently validates the fields and shows a message. */
+const form = document.getElementById('loginForm');
+const msg  = document.getElementById('loginMsg');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const sid = document.getElementById('sid').value.trim();
+  const pwd = document.getElementById('pwd').value.trim();
+  msg.className = 'login-msg';
+  if (!sid || !pwd) {
+    msg.classList.add('err');
+    msg.textContent = 'Please enter both Student ID and password.';
+    return;
+  }
+  /* TODO: replace with a real request to your server, e.g.
+     fetch('/api/login', {method:'POST', body: JSON.stringify({sid, pwd})}) */
+  msg.classList.add('ok');
+  msg.textContent = 'Welcome, ' + sid + '! (Demo mode — connect this form to the student database to enable real login.)';
+});
+</script>
+</body>
+</html>
